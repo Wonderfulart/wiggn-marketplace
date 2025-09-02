@@ -1,0 +1,25 @@
+<section class="section">
+  <div class="container">
+    <h1>Search</h1>
+    <form action="/search" role="search" style="display:flex;gap:8px;margin:10px 0">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products" style="padding:10px;border:1px solid #ddd;border-radius:10px;flex:1">
+      <button class="btn" type="submit">Search</button>
+    </form>
+    {% if search.performed %}
+      <p class="muted">{{ search.results_count }} results</p>
+      <div class="grid" style="margin-top:12px">
+        {% for item in search.results %}
+          <a href="{{ item.url }}" class="card" style="display:block">
+            {% if item.featured_image %}
+              <img src="{{ item.featured_image | img_url: '600x' }}" alt="{{ item.title }}">
+            {% endif %}
+            <div class="title" style="margin-top:8px">{{ item.title }}</div>
+            {% if item.price %}<div class="muted">{{ item.price | money }}</div>{% endif %}
+          </a>
+        {% else %}
+          <p class="muted">No results found.</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
