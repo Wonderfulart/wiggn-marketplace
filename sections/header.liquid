@@ -1,0 +1,42 @@
+<header class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        {% if settings.logo != blank %}
+          <img src="{{ settings.logo | img_url: '200x' }}" alt="{{ shop.name }}" height="32">
+        {% else %}
+          <img src="{{ 'ChatGPT Image Aug 30, 2025, 01_12_28 AM.png' | asset_url }}" alt="{{ shop.name }}" height="32">
+        {% endif %}
+        <span class="brand-name">{{ shop.name }}</span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="/collections/all">Shop</a>
+        <a href="/pages/auctions">Auctions</a>
+        <a href="/pages/sell">Sell</a>
+        <a href="/pages/affiliates">Affiliates</a>
+        <a href="/pages/about">About</a>
+        <a href="/pages/help">Help</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn" href="/search">Search</a>
+        {% if customer %}
+          <a class="btn" href="/account">Account</a>
+        {% else %}
+          <a class="btn btn-primary" href="/account/login">Sign In</a>
+        {% endif %}
+        <a class="btn" href="/cart">Cart ({{ cart.item_count }})</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" }
+  ]
+}
+{% endschema %}
