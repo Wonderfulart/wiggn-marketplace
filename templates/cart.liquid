@@ -1,0 +1,31 @@
+<section class="section">
+  <div class="container">
+    <h1>Cart</h1>
+    {% if cart.item_count == 0 %}
+      <p class="muted">Your cart is empty.</p>
+      <p><a class="btn btn-primary" href="/collections/all">Continue shopping</a></p>
+    {% else %}
+      <form action="/cart" method="post">
+        <div class="grid">
+          {% for item in cart.items %}
+            <div class="card" style="display:grid;grid-template-columns:80px 1fr auto;gap:10px;align-items:center">
+              <img src="{{ item.image | img_url: '160x' }}" alt="{{ item.product.title }}">
+              <div>
+                <div class="title">{{ item.product.title }}</div>
+                <div class="muted">{{ item.line_price | money }}</div>
+              </div>
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" style="width:72px;padding:8px;border:1px solid #ddd;border-radius:10px">
+            </div>
+          {% endfor %}
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center">
+          <div class="title">Total: {{ cart.total_price | money }}</div>
+          <div>
+            <button class="btn" name="update" type="submit">Update</button>
+            <button class="btn btn-primary" name="checkout" type="submit">Checkout</button>
+          </div>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+</section>
