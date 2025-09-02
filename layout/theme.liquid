@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title | escape }}{% if current_page != 1 %} – Page {{ current_page }}{% endif %}{% if shop.name %} – {{ shop.name }}{% endif %}</title>
+  {{ content_for_header }}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="{{ 'style.css' | asset_url }}" rel="stylesheet">
+  <link href="{{ 'theme.css' | asset_url }}" rel="stylesheet">
+</head>
+<body>
+  <div class="site">
+    {% section 'header' %}
+    <main id="MainContent" role="main">{{ content_for_layout }}</main>
+    {% section 'footer' %}
+  </div>
+</body>
+</html>
