@@ -1,0 +1,36 @@
+<footer class="footer">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <div class="title">{{ shop.name }}</div>
+        <p class="muted">Premium wig marketplace for buyers and sellers.</p>
+      </div>
+      <div>
+        <div class="title">Explore</div>
+        <p><a href="/collections/all">Shop</a></p>
+        <p><a href="/pages/auctions">Auctions</a></p>
+        <p><a href="/pages/sell">Sell</a></p>
+      </div>
+      <div>
+        <div class="title">Company</div>
+        <p><a href="/pages/about">About</a></p>
+        <p><a href="/pages/affiliates">Affiliates</a></p>
+        <p><a href="/pages/help">Help</a></p>
+      </div>
+      <div>
+        <div class="title">Legal</div>
+        <p><a href="/policies/privacy-policy">Privacy</a></p>
+        <p><a href="/policies/terms-of-service">Terms</a></p>
+        <p><a href="/policies/refund-policy">Returns</a></p>
+      </div>
+    </div>
+    <div style="margin-top:16px">© {{ 'now' | date: '%Y' }} {{ shop.name }}</div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}
